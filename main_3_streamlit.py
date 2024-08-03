@@ -30,11 +30,6 @@ import streamlit as st
 warnings.filterwarnings("ignore")
 
 
-sys.path.append('C:\\Users\\kaan1\\OneDrive\\Masaüstü\\binance test bot')
-os.chdir('C:\\Users\\kaan1\\OneDrive\\Masaüstü\\binance test bot')
-
-
-
 
 def check_time(cm_futures_client):
     """
