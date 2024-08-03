@@ -497,7 +497,7 @@ thread = threading.Thread(target=run_stream,name="websocket")
 thread_list.append(thread)
 
 def rest_api():
-    app.run() 
+    app.run(port=8001) 
 thread_api = threading.Thread(target=rest_api,name="api")
 thread_list.append(thread_api)
 
