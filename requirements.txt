@@ -11,6 +11,7 @@ contourpy==1.2.1
 cycler==0.12.1
 dateparser==1.2.0
 entrypoints==0.4
+ensurepip
 Faker==26.0.0
 favicon==0.7.0
 Flask==3.0.3
@@ -57,6 +58,7 @@ regex==2024.7.24
 requests-oauthlib==2.0.0
 rsa==4.9
 seaborn==0.13.2
+setuptools
 smmap==5.0.1
 st-annotated-text==4.0.1
 st-theme==1.2.3
