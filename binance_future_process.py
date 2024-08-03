@@ -84,7 +84,7 @@ class stream_events_symbol():
         self.klines_df=pd.DataFrame()
         self.json_data={}
         self.ws=None
-        self.socket = 'wss://stream.binance.com:443/stream?streams={}@kline_{}'.format(self.symbol.lower(),self.interval.lower())
+        self.socket = 'wss://stream.binance.us:443/stream?streams={}@kline_{}'.format(self.symbol.lower(),self.interval.lower())
     def on_message(self,ws, message):
         
         threshold_price=30
