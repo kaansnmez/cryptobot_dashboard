@@ -11,8 +11,6 @@ import urllib.request
 import os,sys
 import streamlit as st
 
-sys.path.append('C:\\Users\\kaan1\\OneDrive\\Masaüstü\\binance test bot')
-os.chdir('C:\\Users\\kaan1\\OneDrive\\Masaüstü\\binance test bot')
 
 
 def read_account_info_fromtxt():
