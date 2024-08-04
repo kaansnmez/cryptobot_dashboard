@@ -613,19 +613,12 @@ def main():
                 try:
                   
                     app.wt1_signal=wt1_15m
-                    print("wt1_signal",wt1_15m)
                     app.wt2_signal=wt2_15m
-                    print("wt2_signal",wt2_15m)
                     app.time=stream.klines_df['close_time']
-                    print("time",stream.klines_df['close_time'])
                     app.kline_df=stream.klines_df
-                    print("kline_df",stream.klines_df)
                     app.pos_df=pos_df
-                    print("pos_df",pos_df)
                     app.profit=calc_profit(pos_df,stream,streaming=True)
-                    print("profit",calc_profit(pos_df,stream,streaming=True))
                     app.assets=get_future_balance_assets(client)
-                    print("assets",get_future_balance_assets(client))
                     app.kline_history=kline(symbol='BTCUSDT',interval='1d')
                     print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
                     """
