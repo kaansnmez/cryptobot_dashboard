@@ -53,7 +53,7 @@ def candle_stick():
             wt_history=json_to_df(get_data())['Historical']['wt_history'].iloc[-99:,:]
             break
         except:
-            print("API is not ready")
+            print("candle_stick is not ready")
             time.sleep(5)
     with contanier[0]:
         fig3 = go.Figure(data=[go.Candlestick(x=kline_history['close_time'],
@@ -123,7 +123,7 @@ def stream():
             assets=json_to_df(get_data())['Historical']['assets']
             break
         except:
-            print("API is not ready")
+            print("stream is not ready")
             time.sleep(5)    
             
     data={k: 0 if v==None else v for k, v in data.items()}
@@ -201,7 +201,7 @@ def historical_table():
             posdata=json_to_df(get_data())['Historical']['posdata']    
             break
         except:
-            print("API is not ready")
+            print("historical_table is not ready")
             time.sleep(5)
     
     column_order=['time','symbol','side','entry','leverage','qty','margin_size','close','close_real_data','profit']
