@@ -40,7 +40,7 @@ class flsk():
             
             kline_index=pd.DataFrame([i for i in range(len(self.kline_history))],columns=['index'])
             indexed_kline=pd.concat([kline_index,self.kline_history])
-            json_list = json.loads(json.dumps(list(indexed_kline.T.to_dict().values())))
+            json_list = json.loads(json.dumps(list(self.kline_history.T.to_dict().values())))
             return json_list
         @self.api.route('/api/wt_history',methods=['GET'])
         def wt_history_data():
