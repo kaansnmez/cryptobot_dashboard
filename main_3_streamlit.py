@@ -676,12 +676,12 @@ def main():
                     
                 except:
                     print("Have a problem for applying app data..")
-                
+                """
                 if (((rem_cross[0]<0) & (wt_signal>0)) | ((rem_cross[0]>0) & (wt_signal<0))) & (rem_count==0):
                     first_cross=True
                     rem_count+=1
                 rem_cross[0]=wt_signal
-                """
+                
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
                     if (df_15m.close.values[-1]<BBupper_15m.values[-1]) & (df_15m.close.values[-1]>BBlower_15m.values[-1]):
