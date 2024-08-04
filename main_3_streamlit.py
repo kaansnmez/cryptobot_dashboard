@@ -396,7 +396,7 @@ def long_pos_open(wt_signal,df_15m,stream,accumulation_decision):
         print("Something Wrong , Trying again.. ")
 def connect_google_sheetapi():
     
-    SERVICE_ACCOUNT_FILE = st.secrets['googleconfig']
+    SERVICE_ACCOUNT_FILE = os.environ['googleconfig']
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
     creds = None
     creds = service_account.Credentials.from_service_account_info(SERVICE_ACCOUNT_FILE,scopes=SCOPES)
