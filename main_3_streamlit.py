@@ -401,6 +401,7 @@ def connect_google_sheetapi():
     for key,value in os.environ.items():
         if (key!='api_key') & (key!='api_secret'):
             service_dict[key]=value
+    service_dict['private_key']=service_dict['private_key'].replace('\n','\\n')
     #dict({k: service_dict[k] for k in desired_order_list})
     SERVICE_ACCOUNT_FILE = service_dict
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
