@@ -670,13 +670,8 @@ def main():
                                       }
                             data=requests.get("http://127.0.0.1:5000/api/{}".format(key)).json()
                             data_dict[url][key]=data
+                            print(data_dict[url][key]]
                     return data_dict
-                def json_to_df(json_dict):
-                    for key in json_dict.keys():
-                        for sub_keys in key.keys():
-                            json_dict[key][sub_keys]=pd.DataFrame.from_dict(json_dict[key][sub_keys])
-                            json_dict[key][sub_keys].head()
-                    return json_dict
                
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
