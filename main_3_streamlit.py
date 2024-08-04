@@ -620,7 +620,6 @@ def main():
                     app.profit=calc_profit(pos_df,stream,streaming=True)
                     app.assets=get_future_balance_assets(client)
                     app.kline_history=kline(symbol='BTCUSDT',interval='1d')
-                    print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
                     """
                     if (rem_triger_time[0]==0) | ((rem_triger_time[0]%2==0) & (rem_triger_time_dup !=rem_triger_time[0])):
                         app.kline_history=kline(symbol='BTCUSDT',interval='1d')
