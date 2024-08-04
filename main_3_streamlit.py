@@ -407,12 +407,20 @@ def connect_google_sheetapi():
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
     creds = None
     creds = service_account.Credentials.from_service_account_info(SERVICE_ACCOUNT_FILE,scopes=SCOPES)"""
-    SERVICE_ACCOUNT_FILE ='/config/keys.json'
+    desired_order_list=["type","project_id","private_key_id","private_key","client_email","client_id","auth_uri","token_uri",
+                        "auth_provider_x509_cert_url","client_x509_cert_url","universe_domain"]
+    service_dict={}
+    for key,value in os.environ.items():
+        if (key!='api_key') & (key!='api_secret'):
+            service_dict[key]=value
+    #SERVICE_ACCOUNT_FILE = {k: service_dict[k] for k in desired_order_list}
+    service_dict['private_key']=service_dict['private_key'].replace('\\n','\n')
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
     creds = None
-    creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE,scopes=SCOPES)
+    creds = service_account.Credentials.from_service_account_info(service_dict,scopes=SCOPES)
     service = build('sheets','v4',credentials=creds)
     return service
+    
 
 def get_df_from_google_sheet():
     SAMPLE_SPREADSHEED_ID = '1l10O7erT4XjHyKBKwR1KMwoxw0Dwi49uyL3cArJRGIc'
