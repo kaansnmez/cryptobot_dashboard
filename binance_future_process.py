@@ -17,13 +17,13 @@ def read_account_info_fromtxt():
     config={'binance':{'api_key':"",
                        'api_secret':""}
             }
-    config['binance']['api_key']=str(os.environ['api_key'])
-    config['binance']['api_key']=str(os.environ['api_secret'])
+    config['binance']['api_key']=os.environ['api_key']
+    config['binance']['api_secret']=os.environ['api_secret']
     return config
 
 config_dict=read_account_info_fromtxt()
-api_key=str(os.environ['api_key'])
-api_secret=str(os.environ['api_secret'])
+api_key=config_dict['binance']['api_key']
+api_secret=config_dict['binance']['api_secret']
 
 def check_internet_connection(host='https://testnet.binancefuture.com'):
     try:
