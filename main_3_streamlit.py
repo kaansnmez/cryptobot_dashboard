@@ -626,6 +626,9 @@ def main():
                     print("profit",calc_profit(pos_df,stream,streaming=True))
                     app.assets=get_future_balance_assets(client)
                     print("assets",get_future_balance_assets(client))
+                    app.kline_history=kline(symbol='BTCUSDT',interval='1d')
+                    print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
+                    """
                     if (rem_triger_time[0]==0) | ((rem_triger_time[0]%2==0) & (rem_triger_time_dup !=rem_triger_time[0])):
                         app.kline_history=kline(symbol='BTCUSDT',interval='1d')
                         print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
@@ -634,7 +637,7 @@ def main():
                         rem_triger_time[0]=(pd.to_datetime(cm_futures_client.time()['serverTime'],unit='ms')+datetime.timedelta(hours=3)).minute
                     except:
                         pass
-                    
+                    """
                     
                 except:
                     print("Have a problem for applying app data..")
