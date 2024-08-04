@@ -80,5 +80,5 @@ class flsk():
         self.api = Flask("__main__")
         self.api.logger.disabled=False
         self.thread_function()
-        self.api.run()
+        self.api.run(port=5000)
             
