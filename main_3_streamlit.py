@@ -609,7 +609,49 @@ def main():
                 rem_wt_cross=wt_signal
                 time.sleep(0.25)
                 BBbasis_15m,BBlower_15m,BBupper_15m=bolinger_strategies(df_15m)
-                
+
+                try:
+                    app.wt1_signal=wt1_15m
+                    print("wt1_signal is ok")
+                except:
+                    print("wt1_signal is false")
+
+                try:
+                    app.time=stream.klines_df['close_time']
+                    print("time is ok")
+                except:
+                    print("time is false")
+
+                try:
+                    app.kline_df=stream.klines_df
+                    print("kline_df is ok")
+                except:
+                    print("kline_df is false")
+
+                try:
+                    app.pos_df=pos_df
+                    print("pos_df is ok")
+                except:
+                    print("pos_df is false")
+
+                try:
+                    app.profit=calc_profit(pos_df,stream,streaming=True)
+                    print("profit is ok")
+                except:
+                    print("profit is false")
+
+                try:
+                    app.assets=get_future_balance_assets(client)
+                    print("assets is ok")
+                except:
+                    print("assets is false")
+
+                try:
+                    app.kline_history=kline(symbol='BTCUSDT',interval=interval)
+                    print("kline_history is ok")
+                except:
+                    print("kline_history is false")
+               """ 
                 try:
                   
                     app.wt1_signal=wt1_15m
@@ -621,7 +663,7 @@ def main():
                     app.assets=get_future_balance_assets(client)
                     app.kline_history=kline(symbol='BTCUSDT',interval=interval)
                     print(app.kline_history)
-                    """
+                    
                     if (rem_triger_time[0]==0) | ((rem_triger_time[0]%2==0) & (rem_triger_time_dup !=rem_triger_time[0])):
                         app.kline_history=kline(symbol='BTCUSDT',interval='1d')
                         print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
@@ -630,7 +672,7 @@ def main():
                         rem_triger_time[0]=(pd.to_datetime(cm_futures_client.time()['serverTime'],unit='ms')+datetime.timedelta(hours=3)).minute
                     except:
                         pass
-                    """
+                    
                     
                 except:
                     print("Have a problem for applying app data..")
@@ -639,7 +681,7 @@ def main():
                     first_cross=True
                     rem_count+=1
                 rem_cross[0]=wt_signal
-                
+                """
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
                     if (df_15m.close.values[-1]<BBupper_15m.values[-1]) & (df_15m.close.values[-1]>BBlower_15m.values[-1]):
