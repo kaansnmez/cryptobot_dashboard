@@ -396,7 +396,7 @@ def long_pos_open(wt_signal,df_15m,stream,accumulation_decision):
         print("Something Wrong , Trying again.. ")
 def connect_google_sheetapi():
     service_dict={}
-    for key,value in os.environ:
+    for key,value in os.environ.items():
         if (key!='api_key') & (key!='api_secret'):
             service_account[key]=value
     SERVICE_ACCOUNT_FILE = service_dict
