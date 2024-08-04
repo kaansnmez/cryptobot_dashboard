@@ -30,6 +30,7 @@ def get_data():
                       }
             data=requests.get("http://localhost:5000/api/{}".format(key)).json()
             data_dict[url][key]=data
+            print(data_dict[url][key])
     return data_dict
 def json_to_df(json_dict):
     for key in json_dict['Historical']:
