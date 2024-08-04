@@ -651,32 +651,6 @@ def main():
                     print("kline_history is ok")
                 except:
                     print("kline_history is false")
-               """ 
-                try:
-                  
-                    app.wt1_signal=wt1_15m
-                    app.wt2_signal=wt2_15m
-                    app.time=stream.klines_df['close_time']
-                    app.kline_df=stream.klines_df
-                    app.pos_df=pos_df
-                    app.profit=calc_profit(pos_df,stream,streaming=True)
-                    app.assets=get_future_balance_assets(client)
-                    app.kline_history=kline(symbol='BTCUSDT',interval=interval)
-                    print(app.kline_history)
-                    
-                    if (rem_triger_time[0]==0) | ((rem_triger_time[0]%2==0) & (rem_triger_time_dup !=rem_triger_time[0])):
-                        app.kline_history=kline(symbol='BTCUSDT',interval='1d')
-                        print("kline_history",kline(symbol='BTCUSDT',interval='1d'))
-                    rem_triger_time_dup=rem_triger_time[0]
-                    try:
-                        rem_triger_time[0]=(pd.to_datetime(cm_futures_client.time()['serverTime'],unit='ms')+datetime.timedelta(hours=3)).minute
-                    except:
-                        pass
-                    
-                    
-                except:
-                    print("Have a problem for applying app data..")
-                """
                 if (((rem_cross[0]<0) & (wt_signal>0)) | ((rem_cross[0]>0) & (wt_signal<0))) & (rem_count==0):
                     first_cross=True
                     rem_count+=1
