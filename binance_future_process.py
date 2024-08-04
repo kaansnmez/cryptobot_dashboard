@@ -17,8 +17,8 @@ def read_account_info_fromtxt():
     config={'binance':{'api_key':"",
                        'api_secret':""}
             }
-    config['binance']['api_key']=st.secrets['binance']['api_key']
-    config['binance']['api_key']=st.secrets['binance']['api_secret']
+    config['binance']['api_key']=os.environ['binance']['api_key']
+    config['binance']['api_key']=os.environ['binance']['api_secret']
     return config
 
 config_dict=read_account_info_fromtxt()
