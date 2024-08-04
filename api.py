@@ -17,14 +17,6 @@ class flsk():
         self.profit=0
         self.assets=0
     def thread_function(self):
-        log = logging.getLogger('werkzeug')
-        log.setLevel(logging.ERROR)
-        @self.api.route('/stopServer', methods=['POST'])
-        def stopServer():
-            func = request.environ.get('werkzeug.server.shutdown')
-            if func is None:
-                raise RuntimeError('Not running with the Werkzeug Server')
-            func()
         @self.api.route('/api/assets',methods=['GET'])
         def assets():
             asset_name=['Balance_USDT','Margin_USDT']
