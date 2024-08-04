@@ -17,6 +17,16 @@ class flsk():
         self.profit=0
         self.assets=0
     def thread_function(self):
+        log = logging.getLogger('werkzeug')
+        log.setLevel(logging.ERROR)
+        
+        @self.api.route('/stopServer', methods=['POST'])
+        def stopServer():
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is None:
+                raise RuntimeError('Not running with the Werkzeug Server')
+            func()
+            
         @self.api.route('/api/assets',methods=['GET'])
         def assets():
             asset_name=['Balance_USDT','Margin_USDT']
@@ -29,11 +39,9 @@ class flsk():
             
         @self.api.route('/api/kline_history',methods=['GET'])
         def kline_history_data():
-            
-            #kline_index=pd.DataFrame([i for i in range(len(self.kline_history))],columns=['index'])
-            #indexed_kline=pd.concat([kline_index,self.kline_history])
             json_list = json.loads(json.dumps(list(self.kline_history.T.to_dict().values())))
             return json_list
+        
         @self.api.route('/api/wt_history',methods=['GET'])
         def wt_history_data():
             
@@ -44,6 +52,7 @@ class flsk():
             wt_sig.columns=['index','wt_1','wt_2','wt_cross']
             json_list = json.loads(json.dumps(list(wt_sig.T.to_dict().values())))
             return json_list
+        
         @self.api.route('/api/pairdata', methods=['GET'])
         def get_pair_data():
             profit=pd.DataFrame([self.profit],columns=['profit'])
@@ -70,7 +79,7 @@ class flsk():
         
     def run(self):
         self.api = Flask("__main__")
-        self.api.logger.disabled=False
+        self.api.logger.disabled=True
         self.thread_function()
-        self.api.run(port=5000)
+        self.api.run()
             
