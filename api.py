@@ -78,7 +78,7 @@ class flsk():
         
     def run(self):
         self.api = Flask("__main__")
-        self.api.logger.disabled=True
+        self.api.logger.disabled=False
         self.thread_function()
         self.api.run()
             
