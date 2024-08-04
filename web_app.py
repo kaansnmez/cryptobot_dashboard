@@ -121,7 +121,9 @@ def stream():
     while True:
         try:
             data=json_to_df(get_data())['RealTime']['pairdata']
+            print(data)
             assets=json_to_df(get_data())['Historical']['assets']
+            print(assets)
             break
         except:
             print("stream is not ready")
