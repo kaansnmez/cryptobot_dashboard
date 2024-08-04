@@ -34,7 +34,7 @@ def get_data():
 def json_to_df(json_dict):
     for key in json_dict.keys():
         for sub_keys in key.keys():
-        json_dict[key][sub_keys]=pd.DataFrame.from_dict(json_dict[key][sub_keys])
+            json_dict[key][sub_keys]=pd.DataFrame.from_dict(json_dict[key][sub_keys])
     return json_dict
 def convert_json_decode_format(df):
     columns=['entry','close','close_real_data','qty','margin_size','profit','leverage']
