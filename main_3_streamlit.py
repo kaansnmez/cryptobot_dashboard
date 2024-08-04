@@ -616,6 +616,7 @@ def main():
                     app.wt2_signal=wt2_15m
                     app.time=stream.klines_df['close_time']
                     app.kline_df=stream.klines_df
+                    print(stream.klines_df)
                     app.pos_df=pos_df
                     app.profit=calc_profit(pos_df,stream,streaming=True)
                     app.assets=get_future_balance_assets(client)
