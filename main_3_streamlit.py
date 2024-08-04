@@ -655,7 +655,29 @@ def main():
                     first_cross=True
                     rem_count+=1
                 rem_cross[0]=wt_signal
-                
+                def get_data():
+                    data_dict={'RealTime':{'pairdata':{}
+                                          },
+                             'Historical':{'wt_history':{},
+                                         'kline_history':{},
+                                         'posdata':{},
+                                         'assets':{}}}
+                    for url in data_dict.keys():
+                        for key in data_dict[url].keys():
+                            
+                            headers = {
+                                      "Content-Type": "application/json"
+                                      }
+                            data=requests.get("http://127.0.0.1:5000/api/{}".format(key)).json()
+                            data_dict[url][key]=data
+                    return data_dict
+                def json_to_df(json_dict):
+                    for key in json_dict.keys():
+                        for sub_keys in key.keys():
+                            json_dict[key][sub_keys]=pd.DataFrame.from_dict(json_dict[key][sub_keys])
+                            json_dict[key][sub_keys].head()
+                    return json_dict
+               
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
                     if (df_15m.close.values[-1]<BBupper_15m.values[-1]) & (df_15m.close.values[-1]>BBlower_15m.values[-1]):
