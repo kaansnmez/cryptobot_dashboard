@@ -670,7 +670,7 @@ def main():
                                       }
                             data=requests.get("http://127.0.0.1:5000/api/{}".format(key)).json()
                             data_dict[url][key]=data
-                            print(data_dict[url][key]]
+                            print(data_dict[url][key])
                     return data_dict
                
                 if first_cross==True:
