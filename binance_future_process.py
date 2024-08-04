@@ -45,11 +45,14 @@ def connect_future_binance(api_key,api_secret):
 
 
 def get_future_balance_assets(client):
-    asssets_balance=client.futures_account_balance()
-    assets=pd.DataFrame(asssets_balance)
-    assets['balance']=assets['balance'].astype('float')
-    assets=assets[assets['balance']>0.0]
-    assets_df=pd.DataFrame(assets)
+    try:
+        asssets_balance=client.futures_account_balance()
+        assets=pd.DataFrame(asssets_balance)
+        assets['balance']=assets['balance'].astype('float')
+        assets=assets[assets['balance']>0.0]
+        assets_df=pd.DataFrame(assets)
+    except:
+        print("Error get asset future balance ")
     return assets_df
 
 def get_klines_data(symbol,interval="4h",UTC_OFFSET=3):
