@@ -28,7 +28,7 @@ def get_data():
             headers = {
                       "Content-Type": "application/json"
                       }
-            data=requests.get("http://127.0.0.1:5000/api/{}".format(key)).json()
+            data=requests.get("http://localhost:5000/api/{}".format(key)).json()
             data_dict[url][key]=data
     return data_dict
 def json_to_df(json_dict):
@@ -268,4 +268,4 @@ def web_app():
     historical_table()
     
 if __name__=='__main__':
-    web_app(host="localhost")
+    web_app()
