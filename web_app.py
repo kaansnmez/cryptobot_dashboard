@@ -24,7 +24,6 @@ def get_data():
                          'assets':{}}}
     for url in data_dict.keys():
         for key in data_dict[url].keys():
-            
             headers = {
                       "Content-Type": "application/json"
                       }
@@ -32,8 +31,8 @@ def get_data():
             data_dict[url][key]=data
     return data_dict
 def json_to_df(json_dict):
-    for key in json_dict.keys():
-        for sub_keys in key.keys():
+    for key in list(json_dict.keys())[1:]:
+        for sub_keys in json_dict[key].keys():
             json_dict[key][sub_keys]=pd.DataFrame.from_dict(json_dict[key][sub_keys])
     return json_dict
 def convert_json_decode_format(df):
