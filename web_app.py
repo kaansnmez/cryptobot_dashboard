@@ -122,7 +122,7 @@ def stream():
         try:
             data=get_data()['RealTime']['pairdata']
             print(data)
-            assets=get_data()['Historical']['assets']
+            assets=json_to_df(get_data())['Historical']['assets']
             print(assets)
             break
         except:
