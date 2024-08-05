@@ -268,4 +268,4 @@ def web_app():
     historical_table()
     
 if __name__=='__main__':
-    web_app()
+    web_app(host="localhost")
