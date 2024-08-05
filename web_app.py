@@ -120,9 +120,9 @@ def stream():
     time.sleep(1)
     while True:
         try:
-            data=json_to_df(get_data())['RealTime']['pairdata']
+            data=get_data()['RealTime']['pairdata']
             print(data)
-            assets=json_to_df(get_data())['Historical']['assets']
+            assets=get_data()['Historical']['assets']
             print(assets)
             break
         except:
