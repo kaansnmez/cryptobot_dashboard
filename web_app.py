@@ -115,14 +115,10 @@ def candle_stick():
 @st.fragment(run_every="10 sec")
 def stream():
     contanier=st.columns((1,1,1.5,1))
-    
-    time.sleep(1)
     while True:
         try:
             data=get_data()['RealTime']['pairdata']
-            print(data)
             assets=json_to_df(get_data())['Historical']['assets']
-            print(assets)
             break
         except:
             print("stream is not ready")
