@@ -609,53 +609,18 @@ def main():
                 rem_wt_cross=wt_signal
                 time.sleep(0.25)
                 BBbasis_15m,BBlower_15m,BBupper_15m=bolinger_strategies(df_15m)
-
                 try:
                     app.wt1_signal=wt1_15m
-                    print("wt1_signal is ok")
-                except:
-                    print("wt1_signal is false")
-                try:
                     app.wt2_signal=wt2_15m
-                    print("wt2_signal is ok")
-                except:
-                    print("wt2_signal is false")
-
-                try:
                     app.time=stream.klines_df['close_time']
-                    print("time is ok")
-                except:
-                    print("time is false")
-
-                try:
                     app.kline_df=stream.klines_df
-                    print("kline_df is ok")
-                except:
-                    print("kline_df is false")
-
-                try:
                     app.pos_df=pos_df
-                    print("pos_df is ok")
-                except:
-                    print("pos_df is false")
-
-                try:
+                    time.sleep(0.5)
                     app.profit=calc_profit(pos_df,stream,streaming=True)
-                    print("profit is ok")
-                except:
-                    print("profit is false")
-
-                try:
                     app.assets=get_future_balance_assets(client)
-                    print("assets is ok")
-                except:
-                    print("assets is false")
-
-                try:
                     app.kline_history=kline(symbol='BTCUSDT',interval=interval)
-                    print("kline_history is ok")
                 except:
-                    print("kline_history is false")
+                    print("Apply data to Api problem")
                 if (((rem_cross[0]<0) & (wt_signal>0)) | ((rem_cross[0]>0) & (wt_signal<0))) & (rem_count==0):
                     first_cross=True
                     rem_count+=1
