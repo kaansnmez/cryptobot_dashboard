@@ -615,6 +615,11 @@ def main():
                     print("wt1_signal is ok")
                 except:
                     print("wt1_signal is false")
+                try:
+                    app.wt2_signal=wt2_15m
+                    print("wt2_signal is ok")
+                except:
+                    print("wt2_signal is false")
 
                 try:
                     app.time=stream.klines_df['close_time']
