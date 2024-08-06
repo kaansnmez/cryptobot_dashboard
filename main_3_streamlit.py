@@ -502,7 +502,7 @@ UTC_OFFSET=3
 rem_signal=[np.nan]
 rem_min=[np.nan]
 app=api.flsk()
-interval='15m'
+interval='1d'
 rem_triger_time_dup=0
 rem_triger_time=[0]
 
