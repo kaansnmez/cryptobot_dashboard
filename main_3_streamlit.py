@@ -629,6 +629,7 @@ def main():
                               }
                     data=requests.get("https://crypto-bot-wt-a012a3b64b2f.herokuapp.com/")
                     web_count=0
+                web_count+=1
                 if (((rem_cross[0]<0) & (wt_signal>0)) | ((rem_cross[0]>0) & (wt_signal<0))) & (rem_count==0):
                     first_cross=True
                     rem_count+=1
