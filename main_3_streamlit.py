@@ -27,6 +27,7 @@ import api
 import os,sys
 import subprocess
 import streamlit as st
+import requests
 warnings.filterwarnings("ignore")
 
 
@@ -527,6 +528,7 @@ thread_list.append(st_thread)
 
 def main():
     count=0
+    web_count=0 # Heroku Awake counter
     global rem_triger_time
     global rem_triger_time_dup
     global rem_wt_cross
@@ -621,27 +623,16 @@ def main():
                     app.kline_history=kline(symbol='BTCUSDT',interval=interval)
                 except:
                     print("Apply data to Api problem")
+                if web_count>2000:
+                    headers = {
+                              "Content-Type": "application/json"
+                              }
+                    data=requests.get("https://crypto-bot-wt-a012a3b64b2f.herokuapp.com/")
+                    web_count=0
                 if (((rem_cross[0]<0) & (wt_signal>0)) | ((rem_cross[0]>0) & (wt_signal<0))) & (rem_count==0):
                     first_cross=True
                     rem_count+=1
                 rem_cross[0]=wt_signal
-                def get_data():
-                    data_dict={'RealTime':{'pairdata':{}
-                                          },
-                             'Historical':{'wt_history':{},
-                                         'kline_history':{},
-                                         'posdata':{},
-                                         'assets':{}}}
-                    for url in data_dict.keys():
-                        for key in data_dict[url].keys():
-                            
-                            headers = {
-                                      "Content-Type": "application/json"
-                                      }
-                            data=requests.get("http://127.0.0.1:5000/api/{}".format(key)).json()
-                            data_dict[url][key]=data
-                            print(data_dict[url][key])
-                    return data_dict
                
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
