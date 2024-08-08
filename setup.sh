@@ -1,8 +1,6 @@
 mkdir -p ~/.streamlit/
 
-echo "[theme]
-base= dark
-[server]
+echo "[server]
 headless = true
 port = $PORT
 enableCORS = false
