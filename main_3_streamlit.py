@@ -637,47 +637,20 @@ def main():
                
                 if first_cross==True:
                 ## Natural Area Buy / Sell operations
-                    if (df_15m.close.values[-1]<BBupper_15m.values[-1]) & (df_15m.close.values[-1]>BBlower_15m.values[-1]):
-                        print("Bolinger Natural Area")
+                    if (wt_signal<0.0):
+                        print("bearish area")
+                        print("wt_cross:",wt_signal)
+                        accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='SELL',pos=False)
+                        short_pos_open(wt_signal,df_15m,stream,accumulation_decision)
                         
-                        if (wt_signal<0.0):
-                            print("bearish area")
-                            print("wt_cross:",wt_signal)
-                            accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='SELL',pos=False)
-                            short_pos_open(wt_signal,df_15m,stream,accumulation_decision)
-                            
-                        else:
-                            if(wt_signal>0.0):
-                                print("bullish area")
-                                print("wt_cross:",wt_signal)
-                                accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='BUY',pos=False)
-                                long_pos_open(wt_signal,df_15m,stream,accumulation_decision)
-                                
-                        app.pos_df=pos_df
-                        
-                    ##Bollinger Upper Sell Operations     
                     else:
-                        if df_15m.close.values[-1]>BBupper_15m.values[-1]:
-                            print("Bolinger Upper area")
-                            #if bolinger_with_wavetrend.obLevel2<wt1_15m.values[-1]:
+                        if(wt_signal>0.0):
+                            print("bullish area")
                             print("wt_cross:",wt_signal)
-    
-                            print("sell signal")
-                            accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='SELL',pos=False)
-                            short_pos_open(wt_signal,df_15m,stream,accumulation_decision)
-                                    
-                                
-                        ##Bollinger Lower Buy Operations       
-                        else:
-                            if df_15m.close.values[-1]<BBlower_15m.values[-1]:
-                                print("Bolinger Lower area")
-                                print("wt_cross:",wt_signal)
-                                print("buy area")
-                                accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='BUY',pos=False)
-                                long_pos_open(wt_signal,df_15m,stream,accumulation_decision)
-                                        
-                                    #else: print("Waiting WaveTrend Buy Signal")
-                        app.pos_df=pos_df
+                            accumulation_decision=wt_cross_accumulation_decision(df_15m,wt_signal,side='BUY',pos=False)
+                            long_pos_open(wt_signal,df_15m,stream,accumulation_decision)
+                            
+                    app.pos_df=pos_df 
                 else: 
                     print("Waiting First Buy/sell WaveTrend Cross")
                     print("WaveTrend: ",wt_signal)
